@@ -7,7 +7,7 @@ import { clsx } from "clsx";
  *  variant: "primary" | "outline",
  *  size: "md" | "lg"
  * }} props
- *
+ * @returns
  */
 export function UiButton({ children, className, size, variant }) {
   const buttonClassName = clsx(
