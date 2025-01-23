@@ -1,4 +1,5 @@
-export function computedWinner(cells, sequenceSize = 5, fieldSize = 19) {
+export function computedWinner(gameState, sequenceSize = 5, fieldSize = 19) {
+  const cells = gameState.cells;
   const gap = Math.floor(sequenceSize / 2);
 
   function compareElements(indexes) {
@@ -14,9 +15,9 @@ export function computedWinner(cells, sequenceSize = 5, fieldSize = 19) {
 
   function getSequenceIndexes(i) {
     const res = [
-      [], // -
-      [], // \
-      [], // /
+      [],
+      [],
+      [],
       [], // |
     ];
 
@@ -28,7 +29,6 @@ export function computedWinner(cells, sequenceSize = 5, fieldSize = 19) {
     }
 
     const x = i % fieldSize;
-
     if (x < gap || x >= fieldSize - gap) {
       res.shift();
       res.shift();
