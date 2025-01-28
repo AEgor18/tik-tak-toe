@@ -7,7 +7,7 @@ export function PlayerInfo({
   isRight,
   name,
   rating,
-  avatar,
+  avatar, 
   symbol,
   timer,
   timerStartAt
