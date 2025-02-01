@@ -10,7 +10,7 @@
 
 import clsx from "clsx"
 
-export function UiTextField({label, required, helperText, errorText,  ...inputProps}) {
+export function UiTextField({label, required, helperText, errorText, className, ...inputProps}) {
     return (
         <div className={className}>
             {label && (
