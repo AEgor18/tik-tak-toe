@@ -60,7 +60,7 @@ export function Game() {
         backLink={<BackLink />}
         title={<GameTitle />}
         gameInfo={
-          <GameInfo isRatingGame playersCount={4} timeMode={"1 мин на ход"} />
+          <GameInfo isRatingGame playersCount={PLAYERS_COUNT} timeMode={"1 мин на ход"} />
         }
         playersList={PLAYERS.slice(0, PLAYERS_COUNT).map((player, index) => {
           const { timer, timerStartAt } = computePlayerTimer(
