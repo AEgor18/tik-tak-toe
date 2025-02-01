@@ -4,8 +4,8 @@ import avatarSrc3 from "./ui/images/avatar-3.png";
 import avatarSrc4 from "./ui/images/avatar-4.png";
 
 export const GAME_STATE_ACTIONS = {
-  CELL_CLICK: "cell-click"
-}
+  CELL_CLICK: "cell-click",
+};
 
 export const GAME_SYMBOLS = {
   ZERO: "zero",

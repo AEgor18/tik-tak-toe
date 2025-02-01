@@ -7,14 +7,14 @@ export function PlayerInfo({
   isRight,
   name,
   rating,
-  avatar, 
+  avatar,
   symbol,
   timer,
-  timerStartAt
+  timerStartAt,
 }) {
   const now = useNow(1000, timerStartAt);
-  const mils = Math.max(now ? timer - (now - timerStartAt) : timer, 0); 
-  const seconds = Math.ceil(mils / 1000)
+  const mils = Math.max(now ? timer - (now - timerStartAt) : timer, 0);
+  const seconds = Math.ceil(mils / 1000);
   const minutesString = String(Math.floor(seconds / 60)).padStart(2, "0");
   const secondsString = String(seconds % 60).padStart(2, "0");
   const isDanger = seconds < 10;
@@ -48,7 +48,7 @@ export function PlayerInfo({
         className={clsx(
           " text-lg font-semibold w-[60px]",
           isRight && "order-1",
-          getTimerColor()
+          getTimerColor(),
         )}
       >
         {minutesString}:{secondsString}
@@ -56,4 +56,3 @@ export function PlayerInfo({
     </div>
   );
 }
-

@@ -13,7 +13,7 @@ import {
   initGameState,
 } from "./model/game-state-reducer";
 import { getNextMove } from "./model/get-next-move";
-import {computedWinner} from "./model/computed-winner"
+import { computedWinner } from "./model/computed-winner";
 import { useCallback, useMemo, useReducer } from "react";
 import { computedWinnerSymbol } from "./model/computed-winner-symbol";
 import { computePlayerTimer } from "./model/compute-player-timer";
@@ -24,17 +24,21 @@ const PLAYERS_COUNT = 2;
 export function Game() {
   const [gameState, dispatch] = useReducer(
     gameStateReducer,
-    { playersCount: PLAYERS_COUNT, defaultTimer: 60000, currentMoveStart: Date.now() },
-    initGameState
+    {
+      playersCount: PLAYERS_COUNT,
+      defaultTimer: 60000,
+      currentMoveStart: Date.now(),
+    },
+    initGameState,
   );
-  
+
   useInterval(
-    1000, 
+    1000,
     !!gameState.currentMove,
-    useCallback (() => {
-      dispatch({type: GAME_STATE_ACTIONS.TICK, now: Date.now()})
-    }, [])
-  )
+    useCallback(() => {
+      dispatch({ type: GAME_STATE_ACTIONS.TICK, now: Date.now() });
+    }, []),
+  );
 
   const winnerSequence = useMemo(() => computedWinner(gameState), [gameState]);
   const nextMove = getNextMove(gameState);
@@ -49,7 +53,7 @@ export function Game() {
       index,
       now: Date.now(),
     });
-  }, [])
+  }, []);
 
   const winnerPlayer = PLAYERS.find((player) => player.symbol === winnerSymbol);
 
@@ -60,12 +64,16 @@ export function Game() {
         backLink={<BackLink />}
         title={<GameTitle />}
         gameInfo={
-          <GameInfo isRatingGame playersCount={PLAYERS_COUNT} timeMode={"1 мин на ход"} />
+          <GameInfo
+            isRatingGame
+            playersCount={PLAYERS_COUNT}
+            timeMode={"1 мин на ход"}
+          />
         }
         playersList={PLAYERS.slice(0, PLAYERS_COUNT).map((player, index) => {
           const { timer, timerStartAt } = computePlayerTimer(
             gameState,
-            player.symbol
+            player.symbol,
           );
           return (
             <PlayerInfo
